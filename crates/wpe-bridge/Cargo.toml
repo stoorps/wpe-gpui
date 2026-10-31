@@ -1,0 +1,12 @@
+[package]
+name = "wpe-bridge"
+version = "0.1.0"
+edition = "2024"
+license = "Apache-2.0"
+
+[dependencies]
+anyhow.workspace = true
+
+[build-dependencies]
+cc = "1"
+pkg-config = "0.3"

@@ -1,0 +1,11 @@
+[package]
+name = "gpui-wpe"
+version = "0.1.0"
+edition = "2024"
+license = "Apache-2.0"
+[dependencies]
+anyhow.workspace = true
+gpui.workspace = true
+wpe-bridge = { path = "../wpe-bridge" }
+raw-window-handle = "0.6"
+ammonia = "4"

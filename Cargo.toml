@@ -1,0 +1,11 @@
+[workspace]
+members = ["crates/wpe-bridge", "crates/gpui-wpe", "examples/browser-demo"]
+resolver = "2"
+
+[workspace.dependencies]
+anyhow = "1"
+gpui = { git = "https://github.com/longbridge/gpui-fast", rev = "7fcd37e6ef8caf212e484d5a8e4cd971dad690e1", default-features = false, features = ["wayland"] }
+gpui_platform = { git = "https://github.com/longbridge/gpui-fast", rev = "7fcd37e6ef8caf212e484d5a8e4cd971dad690e1", default-features = false, features = ["wayland"] }
+
+[profile.dev]
+debug = 0

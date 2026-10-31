@@ -1,0 +1,7 @@
+# Use the optional local WPE package without requiring shell setup. Missing
+# directories are ignored by pkg-config, so system installations still work.
+[env]
+PKG_CONFIG_PATH = { value = ".deps/usr/lib/pkgconfig", relative = true }
+
+[target.'cfg(target_os = "linux")']
+runner = "./scripts/cargo-runner.py"
