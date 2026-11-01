@@ -81,6 +81,12 @@ consume substantial CPU within these limits.
 
 ## Inline and remote images
 
+The demo's offline email fixture includes an inline image, a public HTTPS W3C
+logo, and a deliberately denied localhost tracking image. Selecting “Load remote
+images for this message” requires internet access to load the logo; the localhost
+image stays blocked after consent. A successful run reports one image loaded and
+one denied or failed.
+
 Construct `InlineResource::new(bytes, mime, &limits)` for allowed CID raster
 images. PNG/JPEG/GIF/WebP input is decoded within pixel/allocation limits and
 normalized to a **static PNG**. This deliberately removes animation and metadata.
