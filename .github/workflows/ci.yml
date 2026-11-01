@@ -37,7 +37,7 @@ jobs:
           pkgconf wpewebkit wayland libxkbcommon libdrm mesa libglvnd
           fontconfig freetype2 noto-fonts gtk3 webkit2gtk-4.1 openssl
       - name: Check out sources
-        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
       - name: Install the declared Rust toolchain
@@ -70,7 +70,7 @@ jobs:
     timeout-minutes: 120
     steps:
       - name: Check out maintained sources
-        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
       - name: Require the configured desktop session
