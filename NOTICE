@@ -1,0 +1,41 @@
+wpe-gpui-fast
+
+Project code is made available under the Apache License, Version 2.0, except
+where otherwise identified. See LICENSE-APACHE and THIRD_PARTY.md.
+
+This repository includes modified source from GPUI Fast:
+https://github.com/longbridge/gpui-fast
+Revision: 7fcd37e6ef8caf212e484d5a8e4cd971dad690e1
+
+Upstream copyright notices, preserved from that revision:
+Copyright 2022 - 2025 Zed Industries, Inc.
+Copyright 2026 Longbridge.
+
+The file examples/browser-demo/src/text_input.rs is adapted from
+crates/gpui/examples/input.rs at that revision. It was modified for the browser
+demo: the standalone example application was removed, reusable constructors and
+editing methods were added, keyboard bindings and focus behavior were adjusted,
+and the text field was styled and given horizontal scrolling for browser chrome.
+The original Apache-2.0 license and copyright notices remain applicable to this
+adapted code. GPUI Fast itself derives from Zed's GPUI:
+https://github.com/zed-industries/zed
+
+The native composition integration also uses GPUI Fast's public API and its
+native_webview/linux_webview examples as implementation references.
+
+The current dependency graph uses the published GPUI Kit 0.8.1 facade and GPUI
+Fast / GPUI Fast Platform 0.1.12. Their source repository is:
+https://github.com/longbridge/gpui-kit
+https://github.com/longbridge/gpui-fast
+Copyright 2024 - 2026 Longbridge <https://longbridge.com> (GPUI Kit).
+The earlier pinned revision above remains the provenance of the directly
+adapted text field; updating runtime dependencies does not replace that notice.
+
+The optional upstream-compat embedding proof uses gpui-webview 0.8.1 and
+lb-wry 0.53.3. These are not required by the normal WPE Linux dependency path.
+The application-level email-renderer uses third-party parser, sanitizer, image,
+and networking libraries under their declared licenses; see THIRD_PARTY.md.
+
+Dependencies and native runtime components retain their own licenses and
+copyright notices. This NOTICE does not replace their license texts or claim
+that bundled third-party runtimes are licensed solely under Apache-2.0.

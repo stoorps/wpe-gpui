@@ -1,0 +1,18 @@
+[package]
+name = "email-renderer"
+version = "0.1.0"
+edition = "2024"
+license = "Apache-2.0"
+publish = false
+description = "Application-level preparation and consent for an experimental GPUI email reader"
+
+[dependencies]
+ammonia = "4.2"
+base64 = "0.22"
+cssparser = "0.38"
+html5ever = "=0.29.1"
+image = { version = "0.25", default-features = false, features = ["png", "jpeg", "gif", "webp"] }
+kuchiki = { package = "kuchikiki", version = "=0.8.8-speedreader" }
+percent-encoding = "2.3"
+reqwest = { version = "0.12", default-features = false, features = ["blocking", "rustls-tls"] }
+url = "2.5"

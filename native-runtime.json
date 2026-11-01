@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "source": "https://archlinux.org/packages/extra/x86_64/wpewebkit/json/",
+  "package": "wpewebkit",
+  "repository": "extra",
+  "architecture": "x86_64",
+  "epoch": 0,
+  "version": "2.54.2",
+  "release": "1",
+  "archive_url": "https://archive.archlinux.org/packages/w/wpewebkit/wpewebkit-2.54.2-1-x86_64.pkg.tar.zst",
+  "sha256": "9f0947e1a95fd388b0f2d602e20baa40a4eb7fca19b8eeaedbb09aefa55d9d78"
+}

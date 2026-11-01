@@ -3,9 +3,17 @@ name = "wpe-bridge"
 version = "0.1.0"
 edition = "2024"
 license = "Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/stoorps/wpe-gpui-fast"
+rust-version = "1.98.1"
+description = "UI-thread-local WPEPlatform bridge for gpui-wpe"
+
+[features]
+native-failure-injection = []
 
 [dependencies]
 anyhow.workspace = true
+libc = "0.2"
 
 [build-dependencies]
 cc = "1"

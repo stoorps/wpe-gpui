@@ -1,0 +1,94 @@
+{
+  "checkpoint": "2026-10-31 uncommitted implementation candidate",
+  "compositor": {
+    "compositor": "Weston headless",
+    "exit_code": 0,
+    "finished_utc": "2026-10-31T22:45:30.778711+00:00",
+    "measurement_limitations": [
+      "Virtual compositor, not physical display presentation or COSMIC behavior",
+      "The GPU is still shared with the desktop and other workloads",
+      "This is display isolation, not a security sandbox"
+    ],
+    "output": {
+      "height": 1000,
+      "scale": 1,
+      "width": 1600
+    },
+    "renderer_log": [
+      "[22:44:54.105] Using rendering device: /dev/dri/renderD128",
+      "[22:44:54.108] EGL version: 1.5",
+      "[22:44:54.108] EGL vendor: Mesa Project",
+      "[22:44:54.110] GL vendor: AMD",
+      "[22:44:54.110] GL renderer: AMD Radeon 840M Graphics (radeonsi, krackan1, ACO, DRM 3.64, 7.3.1-1-cachyos)"
+    ],
+    "requested_renderer": "gl",
+    "started_utc": "2026-10-31T22:44:54.072063+00:00"
+  },
+  "note": "Renderer lines identify the isolated Weston compositor. This is not physical presentation evidence.",
+  "schema_version": 1,
+  "sources": [
+    {
+      "artifact": "target/isolated-wayland/resize-summary.json",
+      "sha256": "e05f2e3be12aaf68d2fc78bc5ee1965df565acc6c5efc60b22d99a15770c77c7"
+    },
+    {
+      "artifact": "target/isolated-wayland/resize-trace.json",
+      "sha256": "7bce2dee823789e9d4278db5e61ebd8527fe632324f7bb4281f6dfae72d2a784"
+    },
+    {
+      "artifact": "target/isolated-wayland/resize-weston.log.json",
+      "sha256": "6812fa4464e9dc23a039180980b265a6be60e88c5786fbf02232bad9992e7cca"
+    }
+  ],
+  "summary": {
+    "continuous_duration_ms": 30013,
+    "endpoint": "submitted",
+    "endpoint_label": "resize-to-submitted-frame",
+    "final_failures": [],
+    "final_samples_per_fixture": {
+      "responsive-email": 1
+    },
+    "geometry_only_generations": 0,
+    "incorrect_generations": 0,
+    "limitations": [
+      "Submission is a proxy; no actual compositor presentation timing is established."
+    ],
+    "max_ms": 26.482,
+    "measured_samples": 779,
+    "missed_generations": 0,
+    "missing_final_fixtures": [],
+    "p50_ms": 3.406,
+    "p95_ms": 10.239,
+    "p99_ms": 16.843,
+    "performance_budgets_passed": true,
+    "reference": {
+      "cold_load": "excluded from warm resize latency",
+      "measurement": "warm local original fixture; diagnostic snapshot readback after submit",
+      "platform": "native Wayland",
+      "presentation_feedback": false,
+      "readback_overhead": "diagnostic only; can perturb subsequent samples",
+      "refresh_rate": "not queried; 60Hz budget reference only",
+      "runtime_version": "2.54.2"
+    },
+    "resize_gate_passed": true,
+    "samples_per_fixture": {
+      "responsive-email": 779
+    },
+    "schema_version": 1,
+    "stage_p95_ms_from_geometry": {
+      "acquire_ready_us": 9.682,
+      "layout_us": null,
+      "presentation_us": null,
+      "received_us": 9.682,
+      "submitted_us": 10.239,
+      "t1_us": null,
+      "t2_us": 0.045
+    },
+    "superseded_generations": 0,
+    "total_generations": 779
+  },
+  "window_activity_counts": {
+    "active": 779,
+    "inactive": 0
+  }
+}

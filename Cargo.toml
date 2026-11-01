@@ -1,11 +1,11 @@
 [workspace]
-members = ["crates/wpe-bridge", "crates/gpui-wpe", "examples/browser-demo"]
+members = ["crates/wpe-bridge", "crates/gpui-wpe", "crates/email-renderer", "examples/browser-demo", "examples/embedding"]
 resolver = "2"
 
 [workspace.dependencies]
 anyhow = "1"
-gpui = { git = "https://github.com/longbridge/gpui-fast", rev = "7fcd37e6ef8caf212e484d5a8e4cd971dad690e1", default-features = false, features = ["wayland"] }
-gpui_platform = { git = "https://github.com/longbridge/gpui-fast", rev = "7fcd37e6ef8caf212e484d5a8e4cd971dad690e1", default-features = false, features = ["wayland"] }
+gpui = { package = "gpui-kit", version = "=0.8.1", default-features = false, features = ["gpui-fast"] }
+gpui_platform = { package = "gpui-fast-platform", version = "=0.1.12", default-features = false, features = ["wayland"] }
 
 [profile.dev]
 debug = 0

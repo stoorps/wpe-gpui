@@ -1,0 +1,63 @@
+{
+  "checkpoint": "2026-10-31 uncommitted implementation candidate",
+  "limitations": [
+    "This earlier checkpoint has no physical clipboard evidence; a later user-reported two-way COSMIC test is recorded in 2026-10-31-overlay-manual-summary.json.",
+    "No hosted workflow execution or real bot-created PR was established.",
+    "No one-hour soak was established by these checks."
+  ],
+  "live_image_consent": {
+    "input": "https://fullsphere.co.uk/misc/free-template/images/logo-white-background.jpg",
+    "note": "One public JPEG fetched by the app-owned consent flow and normalized to PNG; not a broad redirect/DNS/security proof.",
+    "result": "consent flow passed: 64843 bytes, image/png",
+    "source": {
+      "artifact": "/tmp/wpe-live-consent-image.log",
+      "sha256": "c6756c9520033b6c5453a9c329a97fac2300b32c5136f19a4836d5f0772c2bda"
+    }
+  },
+  "native_tests": [
+    {
+      "checks": [
+        "per-view color scheme fails explicitly as Unsupported",
+        "per-view color scheme fails explicitly as Unsupported",
+        "two independent views render expected pixels",
+        "queued start, commit, and finish events delivered",
+        "selection query available in exclusively scripting-disabled engine",
+        "native editor reports a copyable selection",
+        "selected UTF-8 text queried without JavaScript",
+        "query emits no host clipboard write",
+        "second query completes before deferred user Copy",
+        "concurrent user Copy is delivered",
+        "typed process termination delivered",
+        "reload recovers terminated WebKit process",
+        "restricted view still denies network load after process recovery",
+        "HTTP commit revokes active application document identity",
+        "Document to HTTP to Back restores original identity after process restart",
+        "history document body re-fetch renders original independent content"
+      ],
+      "passed_checks": 16,
+      "source": {
+        "artifact": "/tmp/wpe-isolated-native-features.log",
+        "sha256": "ea2b21b900926e527cd50ff91b3215af4f3ee96bc4c2bac6f64c64ebcdbf167e"
+      }
+    },
+    {
+      "checks": [
+        "two OS windows have independent live native views",
+        "retained second view starts open",
+        "state reports closed while Entity is retained by another window",
+        "retained weak handle returns Closed without native access",
+        "Closed event delivered exactly once to surviving window",
+        "window removal releases second native producer before Entity drop",
+        "first OS window continues loading and rendering",
+        "dropping retained closed Entity does not stop surviving view",
+        "Entity release emits no duplicate Closed event"
+      ],
+      "passed_checks": 9,
+      "source": {
+        "artifact": "target/isolated-wayland/window-lifecycle-test.log",
+        "sha256": "e596cf95c50da664c7fafe1a8b2a1444c0c9813262d2e30a5fce513eef8e63a4"
+      }
+    }
+  ],
+  "schema_version": 1
+}

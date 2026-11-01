@@ -1,0 +1,57 @@
+name: Propose native WebKit runtime update
+
+on:
+  schedule:
+    - cron: '23 7 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: native-runtime-update
+  cancel-in-progress: false
+
+jobs:
+  propose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Check out maintained update tooling
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
+      - name: Test update selection without network access
+        run: python3 -m unittest discover -s tests -p 'test_native_runtime_update.py'
+      - name: Check official Arch package and hash candidate archive
+        run: python3 scripts/update-native-runtime.py
+      - name: Open or refresh runtime update PR
+        uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e # v7.0.8
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: automation/native-wpe-runtime
+          delete-branch: true
+          add-paths: native-runtime.json
+          commit-message: "deps: update pinned native WPE WebKit runtime"
+          title: "deps: update pinned native WPE WebKit runtime"
+          body: |
+            A new official Arch `wpewebkit` package is available. This updates the
+            package actually selected by `scripts/setup-local-arch.sh`.
+
+            The checker hashes candidate archive bytes from the official archive.
+            Installation additionally requires independent `pacman-key` signature
+            verification. This PR does not install/execute the downloaded package,
+            infer CVE applicability, prove runtime compatibility, or merge itself.
+
+            Review the native package/upstream advisories and the metadata diff.
+            On a supported Arch development machine, close existing demo instances,
+            run `just setup-local`, `just check`, `just test-interop`, and `just smoke`.
+            Confirm the loaded library/build and test resize/input/isolation before
+            merging. Rust and Actions updates are handled separately by Dependabot.
+
+            Maintainer note: GitHub must allow Actions to create pull requests.
+            PRs created with GITHUB_TOKEN do not automatically trigger most other
+            workflows; run validation explicitly or configure a suitable app token.

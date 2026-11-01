@@ -1,0 +1,49 @@
+{
+  "limitations": [
+    "32 injected partial-construction failures; not comprehensive GPU-loss/teardown/fence failure coverage."
+  ],
+  "source": {
+    "artifact": "target/isolated-wayland/constructor-failures.json",
+    "sha256": "f3278aed971331d66d0d21cc23669a5b2b9b1b946b141bcce68298976e0abfd6"
+  },
+  "summary": {
+    "feature": "native-failure-injection (disabled by default)",
+    "passed": true,
+    "schema_version": 1,
+    "scope": "Repeated partial initialization failures with native live-object/source counts and distinct surviving pixel snapshots",
+    "stages": [
+      {
+        "duration_seconds": 2.9847098629979882,
+        "exit_code": 0,
+        "failed_constructors": 8,
+        "healthy_existing_views": 2,
+        "passed": true,
+        "stage": "after-display"
+      },
+      {
+        "duration_seconds": 3.0283353320010065,
+        "exit_code": 0,
+        "failed_constructors": 8,
+        "healthy_existing_views": 2,
+        "passed": true,
+        "stage": "after-egl"
+      },
+      {
+        "duration_seconds": 3.0396351540002797,
+        "exit_code": 0,
+        "failed_constructors": 8,
+        "healthy_existing_views": 2,
+        "passed": true,
+        "stage": "before-webview"
+      },
+      {
+        "duration_seconds": 3.0807613540018792,
+        "exit_code": 0,
+        "failed_constructors": 8,
+        "healthy_existing_views": 2,
+        "passed": true,
+        "stage": "after-webview"
+      }
+    ]
+  }
+}

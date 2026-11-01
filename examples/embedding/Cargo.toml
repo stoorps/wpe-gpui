@@ -1,0 +1,28 @@
+[package]
+name = "embedding-example"
+default-run = "embedding-example"
+version = "0.1.0"
+edition = "2024"
+publish = false
+license = "Apache-2.0"
+
+[features]
+native-failure-injection = ["gpui-wpe/native-failure-injection"]
+# Compile proof only. Never required for the normal WPE Linux dependency path.
+upstream-compat = ["dep:gpui-webview", "dep:wry"]
+
+[dependencies]
+gpui.workspace = true
+gpui-wpe = { path = "../../crates/gpui-wpe" }
+# Type-identity proof: this is the same core selected by gpui-kit/gpui-webview.
+gpui_fast_core = { package = "gpui-fast", version = "=0.1.12", default-features = false, features = ["wayland"] }
+gpui-webview = { version = "=0.8.1", default-features = false, features = ["gpui-fast"], optional = true }
+wry = { package = "lb-wry", version = "=0.53.3", optional = true }
+
+[[bin]]
+name = "embedding-native-test"
+path = "src/native_test.rs"
+
+[[bin]]
+name = "embedding-window-test"
+path = "src/window_test.rs"

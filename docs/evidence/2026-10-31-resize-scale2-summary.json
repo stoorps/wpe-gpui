@@ -1,0 +1,85 @@
+{
+  "compositor": {
+    "compositor": "Weston headless",
+    "exit_code": 0,
+    "output": {
+      "height": 2000,
+      "scale": 2,
+      "width": 3200
+    },
+    "renderer_log": [
+      "[23:08:24.811] Using rendering device: /dev/dri/renderD128",
+      "[23:08:24.815] EGL version: 1.5",
+      "[23:08:24.815] EGL vendor: Mesa Project",
+      "[23:08:24.817] GL vendor: AMD",
+      "[23:08:24.817] GL renderer: AMD Radeon 840M Graphics (radeonsi, krackan1, ACO, DRM 3.64, 7.3.1-1-cachyos)"
+    ],
+    "requested_renderer": "gl"
+  },
+  "limitations": [
+    "Submission proxy, not physical display presentation.",
+    "Integer scale 2, not a mixed-output/fractional-scale transition test."
+  ],
+  "schema_version": 1,
+  "sources": [
+    {
+      "artifact": "target/isolated-wayland/resize-scale2-summary.json",
+      "sha256": "db3908db3db8908b31bcd65347d06c66ad5a8b5d5ab697089e967cc2fd40c6ab"
+    },
+    {
+      "artifact": "target/isolated-wayland/resize-scale2-trace.json",
+      "sha256": "adf220c4ae1c8374d2f09ea02369508723c287a5691a8dbc27261c038dd1f0e6"
+    },
+    {
+      "artifact": "target/isolated-wayland/resize-scale2-weston.log.json",
+      "sha256": "95ec680cf42931c8dc1b972401dafb16fd1754be8894c9c3e8c156d52543a5a0"
+    }
+  ],
+  "summary": {
+    "continuous_duration_ms": 30034,
+    "endpoint": "submitted",
+    "endpoint_label": "resize-to-submitted-frame",
+    "final_failures": [],
+    "final_samples_per_fixture": {
+      "responsive-email": 1
+    },
+    "geometry_only_generations": 0,
+    "incorrect_generations": 0,
+    "limitations": [
+      "Submission is a proxy; no actual compositor presentation timing is established."
+    ],
+    "max_ms": 105.048,
+    "measured_samples": 725,
+    "missed_generations": 0,
+    "missing_final_fixtures": [],
+    "p50_ms": 10.552,
+    "p95_ms": 18.742,
+    "p99_ms": 30.228,
+    "performance_budgets_passed": true,
+    "reference": {
+      "cold_load": "excluded from warm resize latency",
+      "measurement": "warm local original fixture; diagnostic snapshot readback after submit",
+      "platform": "native Wayland",
+      "presentation_feedback": false,
+      "readback_overhead": "diagnostic only; can perturb subsequent samples",
+      "refresh_rate": "not queried; 60Hz budget reference only",
+      "runtime_version": "2.54.2"
+    },
+    "resize_gate_passed": true,
+    "samples_per_fixture": {
+      "responsive-email": 725
+    },
+    "schema_version": 1,
+    "stage_p95_ms_from_geometry": {
+      "acquire_ready_us": 18.033,
+      "layout_us": null,
+      "presentation_us": null,
+      "received_us": 18.033,
+      "submitted_us": 18.742,
+      "t1_us": null,
+      "t2_us": 0.051
+    },
+    "superseded_generations": 15,
+    "total_generations": 740
+  }
+}

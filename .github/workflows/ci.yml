@@ -1,0 +1,119 @@
+name: Validate crate and consumers
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      native:
+        description: 'Run desktop integration on a configured Wayland self-hosted runner'
+        type: boolean
+        default: false
+      soak:
+        description: "Also run the one-hour mixed-view soak (requires native)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  linux:
+    name: Arch / system WPE / checks
+    runs-on: ubuntu-latest
+    container: archlinux:base-devel
+    timeout-minutes: 45
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Install supported build dependencies
+        run: >-
+          pacman -Syu --noconfirm --needed git rustup python curl just
+          pkgconf wpewebkit wayland libxkbcommon libdrm mesa libglvnd
+          fontconfig freetype2 ttf-noto gtk3 webkit2gtk-4.1 openssl
+      - name: Check out sources
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
+      - name: Install the declared Rust toolchain
+        run: |
+          toolchain=$(python3 -c 'import tomllib; print(tomllib.load(open("rust-toolchain.toml", "rb"))["toolchain"]["channel"])')
+          rustup toolchain install "$toolchain" --profile minimal --component clippy --component rustfmt
+      - name: Native runtime provenance
+        run: |
+          pkg-config --modversion wpe-webkit-2.0 wpe-platform-2.0
+          pacman -Q wpewebkit
+          rustc --version
+          cargo --version
+      - name: Check formatting, lint and Rust/Python unit/documentation tests
+        run: just check
+      - name: Build all workspace targets including the independent embedding consumer
+        run: cargo check --workspace --all-targets --locked
+      - name: Compile the upstream Wry-managed construction surface
+        run: cargo check -p embedding-example --features upstream-compat --locked
+      - name: Report dependency identities
+        run: |
+          cargo tree -p embedding-example --invert gpui-fast
+          cargo tree -d
+
+  native:
+    name: Manual / desktop and isolated Wayland GPU checks
+    # This lane requires an explicitly configured desktop session and GPU.
+    # It is never executed automatically for PRs or claimed as headless coverage.
+    if: github.event_name == 'workflow_dispatch' && inputs.native
+    runs-on: [self-hosted, linux, x64, wayland]
+    timeout-minutes: 120
+    steps:
+      - name: Check out maintained sources
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
+      - name: Require the configured desktop session
+        shell: bash
+        run: |
+          test -n "${WAYLAND_DISPLAY:-}"
+          test -n "${XDG_RUNTIME_DIR:-}"
+          pkg-config --modversion wpe-webkit-2.0 wpe-platform-2.0
+          command -v weston
+      - name: Check native lifecycle, input and resource enforcement
+        run: just test-interop
+      - name: Check isolated JS-disabled selected text and process recovery
+        run: just test-native-features
+      - name: Check independent OS-window teardown with a retained entity
+        run: just test-window-lifecycle
+      - name: Check opt-in native partial-construction failure cleanup
+        run: just test-native-failures
+      - name: Check native resource-policy readiness and fail-closed errors
+        run: just test-native-policy
+      - name: Check local demo rendering and clean exit
+        run: just smoke-local
+      - name: Measure resize-to-submission proxy latency and validate layout markers
+        run: just isolated --log target/isolated-wayland/resize-weston.log -- python3 scripts/benchmark-resize.py --trace-output resize-trace.json --output resize-summary.json
+      - name: Measure idle/input/scroll proxies and 1,000 create-close cycles
+        run: just isolated --log target/isolated-wayland/runtime-weston.log -- just perf-runtime --report runtime-trace.json
+      - name: Run the requested one-hour mixed-view soak
+        if: inputs.soak
+        run: just isolated --log target/isolated-wayland/soak-weston.log -- just perf-soak
+      - name: Preserve native performance evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: native-resize-evidence
+          path: |
+            resize-trace.json
+            resize-summary.json
+            runtime-trace.json
+            runtime-trace.progress.jsonl
+            target/runtime.log
+            target/soak-trace.json
+            target/soak-trace.progress.jsonl
+            target/soak.log
+            target/native-failures.json
+            target/native-policy.json
+            target/isolated-wayland/
+          if-no-files-found: warn

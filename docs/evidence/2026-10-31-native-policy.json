@@ -1,0 +1,23 @@
+{
+  "scope": "Native supplied-only content-filter readiness, cancellation and failure tests; not a DNS packet capture or security audit",
+  "raw_report": "target/isolated-wayland/native-policy.json",
+  "raw_sha256": "4206dc7af9686948f18c57985d3d553d3ac8045ace214f1eea154cf4e83208eb",
+  "report": {
+    "schema_version": 1,
+    "passed": true,
+    "cases": [
+      {
+        "mode": "queued",
+        "exit_code": 0,
+        "remaining_policy_stores": [],
+        "passed": true
+      },
+      {
+        "mode": "failure",
+        "exit_code": 0,
+        "remaining_policy_stores": [],
+        "passed": true
+      }
+    ]
+  }
+}

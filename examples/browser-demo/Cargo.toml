@@ -8,6 +8,10 @@ anyhow.workspace = true
 gpui.workspace = true
 gpui_platform.workspace = true
 gpui-wpe = { path = "../../crates/gpui-wpe" }
+email-renderer = { path = "../../crates/email-renderer" }
 unicode-segmentation = "1"
 env_logger = "0.11"
 serde_json = "1"
+libc = "0.2"
+url = "2"
+percent-encoding = "2"

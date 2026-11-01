@@ -1,25 +1,13 @@
 fn main() {
-    let out = std::path::PathBuf::from(std::env::var_os("OUT_DIR").unwrap());
-    let mut header = String::new();
-    for (name, path) in [
-        ("editing", "../../fixtures/editing.html"),
-        ("second", "../../fixtures/second.html"),
-    ] {
-        let bytes = std::fs::read(path).unwrap();
-        let escaped: String = bytes.iter().map(|b| format!("\\{:03o}", b)).collect();
-        header.push_str(&format!(
-            "static const char *fixture_{name} = \"{escaped}\";\n"
-        ));
-        println!("cargo:rerun-if-changed={path}");
-    }
-    std::fs::write(out.join("fixtures.h"), header).unwrap();
     let mut build = cc::Build::new();
-    build.include(out);
     build
         .debug(true)
         .file("native/bridge.c")
         .flag("-std=c11")
         .warnings(true);
+    if std::env::var_os("CARGO_FEATURE_NATIVE_FAILURE_INJECTION").is_some() {
+        build.define("BW_NATIVE_FAILURE_INJECTION", None);
+    }
     for name in [
         "wpe-webkit-2.0",
         "wpe-platform-2.0",

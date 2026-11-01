@@ -1,0 +1,13 @@
+<!doctype html><meta charset="utf-8"><title>Resize correctness fixture</title>
+<style>
+html,body{margin:0;padding:0;font:16px sans-serif;color:#20364a;background:#fafafa}
+#marker{width:64px;height:64px;background:rgb(220,40,40)}
+@media(min-width:800px){#marker{background:rgb(40,180,80)}}
+@media(min-width:1000px){#marker{background:rgb(50,100,220)}}
+@media(min-width:1200px){#marker{background:rgb(240,180,30)}}
+main{padding:24px;max-width:1100px}table{border-collapse:collapse;width:100%;table-layout:fixed}td{border:1px solid #aaa;padding:16px;overflow-wrap:anywhere}img{max-width:100%}
+</style>
+<div id="marker" aria-label="CSS viewport-width marker"></div>
+<main><h1>JavaScript-disabled responsive layout</h1><p>The colored marker depends on CSS viewport width. A stretched previous frame has the wrong marker color even when its output buffer matches the new drawable.</p>
+<table><tr><td>A newsletter column with wrapping text and a long URL: https://example.test/this/is/a/long/link/that/must/wrap/without/stretching/the/page</td><td>Unicode: café — 日本語 — مرحبا — 👋. Resize narrow and wide while GPUI menus or dialogs overlap this content.</td></tr><tr><td colspan="2"><img alt="Inline raster" width="240" height="160" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/l9sAAAAASUVORK5CYII="></td></tr></table>
+<p style="margin-top:800px">Long-document scrolling footer; bounded viewport allocation.</p></main>

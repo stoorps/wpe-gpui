@@ -1,0 +1,147 @@
+{
+  "app_fd_range": {
+    "max": 84,
+    "min": 83
+  },
+  "app_rss_bytes": {
+    "first": 232026112,
+    "last": 178098176,
+    "max": 232357888,
+    "min": 176988160
+  },
+  "assessment": "Interrupted after 1,000-cycle prefix and 26 mixed-workload minutes; not a completed soak pass.",
+  "build_provenance": {
+    "cargo": "cargo 1.98.1 (797e8a9bc 2026-08-05)",
+    "git_head": "fc20bbba215b2be3bb6ea0b8c8d861f79ef3f7df",
+    "running_executable_sha256": "c66284376e7e328871bd3cf1e7215e483e4372443d29f490c8527aa9b35c0bb8",
+    "rustc": "rustc 1.98.1 (48a229cea 2026-09-01)",
+    "source_tree_sha256": "feca38cb1ea71f5338c8a9f8a52d3e99ef83865a40da0c3397c21a32876697ca",
+    "working_tree_dirty": true
+  },
+  "completed_prefix_cycles": 1000,
+  "delivery_decision": "User explicitly waived any further one-hour soak for this delivery. The one-hour gate remains unvalidated; no restart is authorized.",
+  "exit_code": null,
+  "final_report_written": false,
+  "last_checkpoint": {
+    "active_tabs": 1,
+    "cycle": 1000,
+    "elapsed_seconds": 1651.743353708,
+    "kind": "mixed",
+    "mixed_elapsed_seconds": 1560.199971314,
+    "mixed_steps": 1560,
+    "native": {
+      "displays": 1,
+      "document_bytes": 765,
+      "imports": 5,
+      "pending_frames": 0,
+      "resource_bytes": 0,
+      "resource_waits": 0,
+      "sources": 0,
+      "views": 1
+    },
+    "sample": {
+      "cpu_ticks": 14154,
+      "fds": 83,
+      "involuntary_context_switches": 9194,
+      "processes": 14,
+      "rss_bytes": 178098176,
+      "threads": 52,
+      "tree_fds": 248,
+      "tree_rss_bytes": 644206592,
+      "voluntary_context_switches": 2665283
+    },
+    "window_active": true
+  },
+  "limitations": [
+    "Checkpoint counters are snapshots, not a continuous allocation trace or proof that no transient leaks occurred.",
+    "The interrupted run has no successful final report or exit status.",
+    "This run used its recorded dirty source/build checkpoint; later policy fixes are not covered by its duration.",
+    "No one-hour completion or final soak proxy-gate evaluation is claimed."
+  ],
+  "measurement_scope": "Statistics cover the 26 mixed minute checkpoints, excluding the separate mixed_start transition snapshot.",
+  "mixed_minute_checkpoints": 26,
+  "mixed_observed_seconds": 1560.199971314,
+  "mixed_start_checkpoint": {
+    "active_tabs": 1,
+    "cycle": 1000,
+    "elapsed_seconds": 91.545488845,
+    "kind": "mixed_start",
+    "mixed_elapsed_seconds": 0.002118304,
+    "mixed_steps": 0,
+    "native": {
+      "displays": 1,
+      "document_bytes": 765,
+      "imports": 5,
+      "pending_frames": 0,
+      "resource_bytes": 0,
+      "resource_waits": 0,
+      "sources": 0,
+      "views": 1
+    },
+    "sample": {
+      "cpu_ticks": 2435,
+      "fds": 89,
+      "involuntary_context_switches": 1847,
+      "processes": 20,
+      "rss_bytes": 230813696,
+      "threads": 54,
+      "tree_fds": 310,
+      "tree_rss_bytes": 755453952,
+      "voluntary_context_switches": 195205
+    },
+    "window_active": true
+  },
+  "native_counter_ranges": {
+    "displays": {
+      "max": 1,
+      "min": 1
+    },
+    "document_bytes": {
+      "max": 765,
+      "min": 765
+    },
+    "imports": {
+      "max": 5,
+      "min": 5
+    },
+    "pending_frames": {
+      "max": 0,
+      "min": 0
+    },
+    "resource_bytes": {
+      "max": 0,
+      "min": 0
+    },
+    "resource_waits": {
+      "max": 0,
+      "min": 0
+    },
+    "sources": {
+      "max": 0,
+      "min": 0
+    },
+    "views": {
+      "max": 1,
+      "min": 1
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "artifact": "target/interrupted-soak/soak-trace.progress.jsonl",
+      "sha256": "a98bc827f74ec34e10fcfcb0c03670106ba0cdb273887c26e4080c1df774f35e"
+    },
+    {
+      "artifact": "target/interrupted-soak/soak.log",
+      "sha256": "03b40f4a57f94e42dd5ff2fba36f07c7ba4c6b2af4927296138f56630c683f30"
+    },
+    {
+      "artifact": "target/interrupted-soak/soak-build-provenance.json",
+      "sha256": "2145f0bcf6741e49284e0deaf0c3d3a4f911e39a8e66a079659e680daeaccbe9"
+    },
+    {
+      "artifact": "target/interrupted-soak/interruption.json",
+      "sha256": "70817cfb69b7ab3dc61324e3e576c15a61f8d9c81aed75d801d6c082c182a803"
+    }
+  ]
+}

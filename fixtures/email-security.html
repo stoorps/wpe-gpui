@@ -1,0 +1,18 @@
+<!doctype html>
+<!-- Original adversarial fixture. Render only through the email consumer. -->
+<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'">
+<base href="https://tracker.invalid/">
+<style>@import 'https://tracker.invalid/css';</style>
+<table width="640" cellpadding="12"><tr><td id="section" style="max-width:640px;padding:12px;color:#123456">Reading pane שלום 中文 👋</td></tr></table>
+<div id="section">Duplicate anchor</div>
+<svg><foreignObject><p onload="alert(1)">Foreign content</p></foreignObject><image href="file:///etc/passwd"/></svg>
+<math><mtext><table><mglyph><style><!--</style><img title="--><img src=x onerror=alert(1)>"></table></mtext></math>
+<img src="cid:%252e%252e%252fsecret" alt="double-encoded traversal">
+<img src="gpui-resource://999/inline-0" alt="other document">
+<img src="data:image/svg+xml;base64,PHN2Zy8+" alt="active image">
+<p style="background:u\000072l('https://tracker.invalid/css-image');font-family:var(--track);color:rgb(12,20,30);padding:8px">Safe inline color and spacing</p>
+<a href="java&#x73;cript:alert(1)">Encoded active link</a>
+<img src="https://tracker.invalid/pixel.png" alt="requires consent">
+<iframe src="https://tracker.invalid/frame"></iframe>
+<form action="https://tracker.invalid/submit"><input autofocus value="unsafe control"></form>
+<script>document.location='https://tracker.invalid/script';</script>

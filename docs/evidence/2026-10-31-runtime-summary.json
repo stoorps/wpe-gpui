@@ -1,0 +1,281 @@
+{
+  "benchmark": "runtime-and-lifecycle",
+  "budgets": {
+    "app_fd_growth": 16,
+    "app_rss_growth_bytes": 67108864,
+    "cached_imports_per_view": 8,
+    "context_switch_proxy_per_second": 50,
+    "descendant_fd_growth": 64,
+    "descendant_rss_growth_bytes": 268435456,
+    "dom_observation_ms": {
+      "max": 500,
+      "p95": 100,
+      "p99": 200
+    },
+    "idle_cpu_percent_one_core": 5,
+    "idle_submitted_frames_per_interval": 2,
+    "pending_buffers_per_view": 4,
+    "scroll_submission_interval_ms": {
+      "max": 200,
+      "p95": 50,
+      "p99": 100
+    },
+    "status": "provisional local regression budgets, not compositor presentation budgets"
+  },
+  "checkpoint": "2026-10-31 uncommitted implementation candidate",
+  "duration_seconds": 242.379267488,
+  "environment_note": "Desktop COSMIC Wayland session; available DRM devices in metadata do not prove the active EGL renderer.",
+  "failures": [],
+  "idle": [
+    {
+      "after": {
+        "cpu_ticks": 146,
+        "fds": 85,
+        "involuntary_context_switches": 57,
+        "processes": 8,
+        "rss_bytes": 223092736,
+        "threads": 49,
+        "tree_fds": 166,
+        "tree_rss_bytes": 492138496,
+        "voluntary_context_switches": 17247
+      },
+      "before": {
+        "cpu_ticks": 144,
+        "fds": 87,
+        "involuntary_context_switches": 57,
+        "processes": 8,
+        "rss_bytes": 225525760,
+        "threads": 50,
+        "tree_fds": 168,
+        "tree_rss_bytes": 494309376,
+        "voluntary_context_switches": 17214
+      },
+      "diagnostic_timer": "suspended for this entire interval; one boundary callback",
+      "duration_seconds": 10.002257539,
+      "limitations": [
+        "CPU excludes WebKit subprocesses; tree RSS and FD snapshots include descendants",
+        "Context switches are not hardware wakeups; terminating threads can make the aggregate delta negative",
+        "Boundary snapshots add small measurement overhead"
+      ],
+      "native_after": {
+        "displays": 1,
+        "document_bytes": 765,
+        "imports": 2,
+        "pending_frames": 0,
+        "resource_bytes": 0,
+        "resource_waits": 0,
+        "sources": 0,
+        "views": 1
+      },
+      "native_before": {
+        "displays": 1,
+        "document_bytes": 765,
+        "imports": 2,
+        "pending_frames": 0,
+        "resource_bytes": 0,
+        "resource_waits": 0,
+        "sources": 0,
+        "views": 1
+      },
+      "process_context_switches_per_second_proxy": 3.2992551802759573,
+      "process_cpu_percent_one_core": 0.1999548594106641,
+      "submitted_frames": 0,
+      "visibility": "visible",
+      "window_active_end": false,
+      "window_active_start": false,
+      "window_visible_end": true,
+      "window_visible_start": true
+    },
+    {
+      "after": {
+        "cpu_ticks": 147,
+        "fds": 85,
+        "involuntary_context_switches": 57,
+        "processes": 8,
+        "rss_bytes": 222969856,
+        "threads": 49,
+        "tree_fds": 166,
+        "tree_rss_bytes": 491827200,
+        "voluntary_context_switches": 17294
+      },
+      "before": {
+        "cpu_ticks": 146,
+        "fds": 84,
+        "involuntary_context_switches": 57,
+        "processes": 8,
+        "rss_bytes": 223092736,
+        "threads": 49,
+        "tree_fds": 165,
+        "tree_rss_bytes": 492138496,
+        "voluntary_context_switches": 17248
+      },
+      "diagnostic_timer": "suspended for this entire interval; one boundary callback",
+      "duration_seconds": 10.002883111,
+      "limitations": [
+        "CPU excludes WebKit subprocesses; tree RSS and FD snapshots include descendants",
+        "Context switches are not hardware wakeups; terminating threads can make the aggregate delta negative",
+        "Boundary snapshots add small measurement overhead"
+      ],
+      "native_after": {
+        "displays": 1,
+        "document_bytes": 765,
+        "imports": 2,
+        "pending_frames": 0,
+        "resource_bytes": 0,
+        "resource_waits": 0,
+        "sources": 0,
+        "views": 1
+      },
+      "native_before": {
+        "displays": 1,
+        "document_bytes": 765,
+        "imports": 2,
+        "pending_frames": 0,
+        "resource_bytes": 0,
+        "resource_waits": 0,
+        "sources": 0,
+        "views": 1
+      },
+      "process_context_switches_per_second_proxy": 4.598674151196927,
+      "process_cpu_percent_one_core": 0.0999711771999332,
+      "submitted_frames": 0,
+      "visibility": "hidden",
+      "window_active_end": false,
+      "window_active_start": false,
+      "window_visible_end": true,
+      "window_visible_start": true
+    }
+  ],
+  "input": {
+    "endpoint": "dispatch-to-DOM-observed upper bound",
+    "includes": "GPUI dispatch, WebKit input handling, diagnostic JS IPC, up to 10ms observation polling; excludes compositor presentation",
+    "matched": 200,
+    "max_ms": 18.18,
+    "p50_ms": 10.375,
+    "p95_ms": 11.083,
+    "p99_ms": 15.333,
+    "samples": 200
+  },
+  "lifecycle": {
+    "after": {
+      "cpu_ticks": 2241,
+      "fds": 95,
+      "involuntary_context_switches": 713,
+      "processes": 8,
+      "rss_bytes": 229023744,
+      "threads": 48,
+      "tree_fds": 179,
+      "tree_rss_bytes": 509108224,
+      "voluntary_context_switches": 256252
+    },
+    "before": {
+      "cpu_ticks": 298,
+      "fds": 97,
+      "involuntary_context_switches": 66,
+      "processes": 8,
+      "rss_bytes": 225918976,
+      "threads": 49,
+      "tree_fds": 179,
+      "tree_rss_bytes": 505425920,
+      "voluntary_context_switches": 63124
+    },
+    "closed_entities_still_alive": 0,
+    "completed_cycles": 1000,
+    "growth": {
+      "fd_growth": -2,
+      "process_growth": 0,
+      "rss_growth_bytes": 3104768,
+      "tree_fd_growth": 0,
+      "tree_rss_growth_bytes": 3682304
+    },
+    "in_flight_close_cycles": 800,
+    "mixed_requested_seconds": 0,
+    "mixed_steps": 0,
+    "native_after": {
+      "displays": 1,
+      "document_bytes": 765,
+      "imports": 4,
+      "pending_frames": 0,
+      "resource_bytes": 0,
+      "resource_waits": 0,
+      "sources": 0,
+      "views": 1
+    },
+    "native_before": {
+      "displays": 1,
+      "document_bytes": 765,
+      "imports": 4,
+      "pending_frames": 0,
+      "resource_bytes": 0,
+      "resource_waits": 0,
+      "sources": 0,
+      "views": 1
+    },
+    "peak_cached_imports": 4,
+    "peak_outstanding_buffers": 2,
+    "rendered_cycles": 200,
+    "requested_cycles": 1000
+  },
+  "limitations": [
+    "DOM-observed latency includes diagnostic script IPC/polling; it is not input-to-presentation latency",
+    "Submission intervals may include unrelated frames and miss intermediate frames; physical display frame pacing remains unmeasured",
+    "Idle measurements suspend the diagnostic timer; CPU excludes WebKit subprocesses and context switches are only a wakeup proxy",
+    "RSS includes allocator/driver caches and shared mappings; process-tree RSS double-counts shared pages",
+    "FD/RSS budgets are provisional regression gates on this run, not proof of no leak or broad hardware performance",
+    "Only the requested soak duration/cycle count was exercised; a short run does not establish the one-hour gate"
+  ],
+  "proxy_gates": {
+    "idle": true,
+    "input": true,
+    "native_live_objects": true,
+    "passed": true,
+    "resource_growth": true,
+    "scroll": true,
+    "scroll_submission_intervals": true
+  },
+  "reference": {
+    "cpu_model": "AMD Ryzen AI 5 340 w/ Radeon 840M",
+    "drm_devices_available_not_active_renderer_proof": [
+      {
+        "device": "renderD128",
+        "pci_device": "0x1114",
+        "vendor": "0x1002"
+      },
+      {
+        "device": "card1",
+        "pci_device": "0x1114",
+        "vendor": "0x1002"
+      }
+    ],
+    "kernel": "7.3.1-1-cachyos",
+    "logical_cpus": 12,
+    "renderer_override": null,
+    "runtime_version": "2.54.2",
+    "software_override": null,
+    "wayland_display": "wayland-1"
+  },
+  "runtime_library_filename": "libWPEWebKit-2.0.so.1",
+  "schema_version": 1,
+  "scroll": {
+    "endpoint": "dispatch-to-DOM-observed upper bound",
+    "includes": "GPUI dispatch, WebKit input handling, diagnostic JS IPC, up to 10ms observation polling; excludes compositor presentation",
+    "matched": 200,
+    "max_ms": 33.821,
+    "p50_ms": 20.582,
+    "p95_ms": 31.092,
+    "p99_ms": 32.439,
+    "samples": 200
+  },
+  "source": {
+    "artifact": "target/runtime-full-trace.json",
+    "sha256": "2f44fb7f60a30f5820a9b639d4ac10ecff2bac3a4234c4183583544352462c7c"
+  },
+  "workload": {
+    "idle_seconds_per_visibility_requested": 10,
+    "latency_samples_per_kind_requested": 200,
+    "minimum_short_suite_workload_met": true,
+    "minimum_short_suite_workload_requested": true,
+    "mixed_observed_seconds": 0.0,
+    "one_hour_mixed_soak_met": false
+  }
+}

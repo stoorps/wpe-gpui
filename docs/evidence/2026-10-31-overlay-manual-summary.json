@@ -1,0 +1,29 @@
+{
+  "capture_scope": "Actual Weston output framebuffer including GPUI and WPE surfaces.",
+  "captures": [
+    {
+      "artifact": "target/overlay-proof/captures/menu/wayland-screenshot-2026-10-31_23-07-22.png",
+      "sha256": "b0ebaf342818dc83657825e0eefce4c79b64a844e2034c17c1b6f076a79d3e3f"
+    },
+    {
+      "artifact": "target/overlay-proof/captures/modal/wayland-screenshot-2026-10-31_23-07-20.png",
+      "sha256": "8f848e15c6888f16d1428682e16fc96c672083d77fa66de542207544b0a6d6c9"
+    }
+  ],
+  "clipboard": {
+    "environment": "Desktop COSMIC, just lab",
+    "result": "Copy/paste worked from web content into another application and back into web content.",
+    "scope": "Closes the basic physical cross-application clipboard gate for this reported setup; no claim of exhaustive formats/IME/compositor coverage.",
+    "verification_kind": "User-reported physical manual verification"
+  },
+  "inspection": "Root agent inspected the actual PNGs and confirmed GPUI modal/backdrop/shadow and long menu drawn over WPE.",
+  "limitations": [
+    "Headless Weston overlay captures are not physical COSMIC screenshots.",
+    "Captures perturb rendering and are excluded from performance timing."
+  ],
+  "schema_version": 1,
+  "source": {
+    "artifact": "target/overlay-proof/captures/capture-report.json",
+    "sha256": "20e85c4ee5f65d33f698c40f8a00acb852b65055d74be5d7fe515b1149159d00"
+  }
+}

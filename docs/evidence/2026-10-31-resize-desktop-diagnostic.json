@@ -1,0 +1,70 @@
+{
+  "checkpoint": "2026-10-31 uncommitted diagnostic run; failed, not a release pass",
+  "interpretation": "Desktop focus/scale state changed during this run. Diagnostic window bounds continued to change while the GPUI viewport stopped propagating new accepted native geometry, with no observed outstanding-frame backlog. This supports further geometry/background-throttling investigation; it does not establish a root cause.",
+  "limitations": [
+    "Earlier desktop diagnostic also had a doubled sequence bug and is not used as performance evidence.",
+    "The isolated active-window run is a separate passing checkpoint; it does not erase this failure."
+  ],
+  "schema_version": 1,
+  "sources": [
+    {
+      "artifact": "/tmp/wpe-resize-diagnostic-summary.json",
+      "sha256": "0647f6dd2fe328515719ebe1d82c72d070ba74b50f3409347dc458d53e39bddc"
+    },
+    {
+      "artifact": "/tmp/wpe-resize-diagnostic-trace.json",
+      "sha256": "bc95cdf9ac320acb9a7d02b371181bbf5ad56c52083a346e21f9f1f1b64e3ec3"
+    }
+  ],
+  "summary": {
+    "continuous_duration_ms": 30499,
+    "endpoint": "submitted",
+    "endpoint_label": "resize-to-submitted-frame",
+    "final_failures": [],
+    "final_samples_per_fixture": {
+      "responsive-email": 1
+    },
+    "geometry_only_generations": 0,
+    "incorrect_generations": 60,
+    "limitations": [
+      "Submission is a proxy; no actual compositor presentation timing is established."
+    ],
+    "max_ms": 16.859,
+    "measured_samples": 171,
+    "missed_generations": 60,
+    "missing_final_fixtures": [],
+    "p50_ms": 4.652,
+    "p95_ms": 11.034,
+    "p99_ms": 16.012,
+    "performance_budgets_passed": false,
+    "reference": {
+      "cold_load": "excluded from warm resize latency",
+      "measurement": "warm local original fixture; diagnostic snapshot readback after submit",
+      "platform": "native Wayland",
+      "presentation_feedback": false,
+      "readback_overhead": "diagnostic only; can perturb subsequent samples",
+      "refresh_rate": "not queried; 60Hz budget reference only",
+      "runtime_version": "2.54.2"
+    },
+    "resize_gate_passed": false,
+    "samples_per_fixture": {
+      "responsive-email": 171
+    },
+    "schema_version": 1,
+    "stage_p95_ms_from_geometry": {
+      "acquire_ready_us": 10.712,
+      "layout_us": null,
+      "presentation_us": null,
+      "received_us": 10.712,
+      "submitted_us": 11.034,
+      "t1_us": null,
+      "t2_us": 0.06
+    },
+    "superseded_generations": 531,
+    "total_generations": 762
+  },
+  "window_activity_counts": {
+    "active": 89,
+    "inactive": 673
+  }
+}
