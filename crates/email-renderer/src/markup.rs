@@ -17,7 +17,7 @@ impl TokenSink for Check {
     fn process_token(&self, token: Token, _: u64) -> TokenSinkResult<()> {
         if let TagToken(tag) = token
             && tag.kind == StartTag
-            && tag.name.as_ref() == "template"
+            && &*tag.name == "template"
         {
             self.template.set(true);
         }
