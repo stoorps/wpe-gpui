@@ -20,7 +20,7 @@ See [support](support.md) for the limits of the tested configurations.
 On Arch Linux:
 
 ```sh
-sudo pacman -S --needed base-devel pkgconf wpewebkit wayland libxkbcommon libdrm mesa libglvnd fontconfig freetype2 ttf-noto
+sudo pacman -S --needed base-devel pkgconf wpewebkit wayland libxkbcommon libdrm mesa libglvnd fontconfig freetype2 noto-fonts
 cargo run -p browser-demo
 ```
 

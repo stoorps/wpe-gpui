@@ -18,6 +18,10 @@ and broad GPU/compositor coverage are not available. See the
 [capabilities and limitations](docs/support.md)
 before choosing it for an application.
 
+**AI Use:** This project has been AI generated, and has not undergone manual review & refinement yet. 
+It's purpose is to unblock development of a personal application, and it works well enough for early development of said app, and so I have not yet allocated time to ensure it's quality. 
+**USE AT YOUR OWN RISK**.
+
 ## What it provides
 
 - A managed `WebView` entity with a builder API shaped around `gpui-webview`.

@@ -646,6 +646,43 @@ pub fn prepare_email(
 mod tests {
     use super::*;
     #[test]
+    fn offline_fixture_has_a_loadable_remote_image_and_a_denied_tracker() {
+        let limits = Limits::default();
+        let image = InlineResource::new(png(), "image/png", &limits).unwrap();
+        let inline = BTreeMap::from([("hero@example.test".into(), image.clone())]);
+        let mut email = prepare_email(
+            1,
+            include_str!("../../../fixtures/email.html"),
+            "Offline fixture",
+            &inline,
+            &limits,
+        )
+        .unwrap();
+        assert_eq!(email.resources.len(), 1);
+        assert_eq!(email.remote_images.len(), 2);
+        let fetcher = RemoteFetcher::new(limits);
+        let report = email
+            .approve_remote_images_with(&RemoteConsent::for_document(1), |url, consent| {
+                if url.scheme() == "https" && url.host_str() == Some("www.w3.org") {
+                    Ok(image.clone())
+                } else {
+                    // Exercise the real policy rejection without any network access.
+                    fetcher.fetch_with_consent(url, consent)
+                }
+            })
+            .unwrap();
+        assert_eq!(report.loaded, 1);
+        assert_eq!(report.failed.len(), 1);
+        assert_eq!(email.resources.len(), 2);
+        let public_image = email
+            .remote_images
+            .iter()
+            .find(|image| image.url.scheme() == "https")
+            .unwrap();
+        assert!(email.resources.contains_key(&public_image.key));
+    }
+
+    #[test]
     fn decoded_aggregate_limits_inline_and_consented_images() {
         let limits = Limits {
             max_total_decoded_image_bytes: 16,
