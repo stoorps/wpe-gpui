@@ -35,7 +35,7 @@ jobs:
         run: >-
           pacman -Syu --noconfirm --needed git rustup python curl just
           pkgconf wpewebkit wayland libxkbcommon libdrm mesa libglvnd
-          fontconfig freetype2 ttf-noto gtk3 webkit2gtk-4.1 openssl
+          fontconfig freetype2 noto-fonts gtk3 webkit2gtk-4.1 openssl
       - name: Check out sources
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
