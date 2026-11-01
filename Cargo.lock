@@ -1635,7 +1635,7 @@ dependencies = [
  "ammonia",
  "base64 0.23.1",
  "cssparser 0.38.0",
- "html5ever 0.29.1",
+ "html5ever 0.40.1",
  "image",
  "kuchikiki",
  "percent-encoding",

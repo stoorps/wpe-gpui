@@ -10,7 +10,7 @@ description = "Application-level preparation and consent for an experimental GPU
 ammonia = "4.2"
 base64 = "0.23"
 cssparser = "0.38"
-html5ever = "=0.29.1"
+html5ever = "=0.40.1"
 image = { version = "0.25", default-features = false, features = ["png", "jpeg", "gif", "webp"] }
 kuchiki = { package = "kuchikiki", version = "=0.8.8-speedreader" }
 percent-encoding = "2.3"
