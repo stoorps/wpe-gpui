@@ -5,8 +5,8 @@
   "repository": "extra",
   "architecture": "x86_64",
   "epoch": 0,
-  "version": "2.54.2",
+  "version": "2.54.3",
   "release": "1",
-  "archive_url": "https://archive.archlinux.org/packages/w/wpewebkit/wpewebkit-2.54.2-1-x86_64.pkg.tar.zst",
-  "sha256": "9f0947e1a95fd388b0f2d602e20baa40a4eb7fca19b8eeaedbb09aefa55d9d78"
+  "archive_url": "https://archive.archlinux.org/packages/w/wpewebkit/wpewebkit-2.54.3-1-x86_64.pkg.tar.zst",
+  "sha256": "41b556a6f096cd2d3cc51449cf13f0eb66c7d888ccc2a41ff82688bee9f4d6fd"
 }
